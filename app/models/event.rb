@@ -20,4 +20,6 @@
 #  fk_rails_...  (user_id => users.id)
 #
 class Event < ApplicationRecord
+  validates :event_name, uniqueness: true
+  validates :event_name, :event_venue, :event_date, :description, presence: true
 end
