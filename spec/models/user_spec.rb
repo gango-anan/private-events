@@ -14,5 +14,35 @@
 require 'rails_helper'
 
 RSpec.describe User, type: :model do
-  pending "add some examples to (or delete) #{__FILE__}"
+  def create_a_user(name: "#{ SecureRandom.hex(4) }")
+    User.create(username: name)
+  end
+
+  describe "#valid?" do
+    it "is valid when username is unique" do
+      create_a_user
+
+      user = User.new
+      user.username = "Gango"
+      expect(user.valid?).to be true
+    end
+
+    it "is invalid if username is taken" do
+      create_a_user(name: "galiwango")
+
+      user = User.new
+      user.username = "galiwango"
+      expect(user).not_to be_valid
+    end
+
+    it "is invalid if the username is blank" do
+      user = create_a_user
+
+      user.username = ""
+      expect(user).not_to be_valid
+
+      user.username = nil
+      expect(user).not_to be_valid
+    end
+  end
 end
