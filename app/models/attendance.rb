@@ -19,6 +19,6 @@
 #  fk_rails_...  (event_id => events.id)
 #
 class Attendance < ApplicationRecord
-  belongs_to :user
+  belongs_to :user, foreign_key: "attendee_id", class_name: "User"
   belongs_to :event
 end
