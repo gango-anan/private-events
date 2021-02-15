@@ -9,7 +9,7 @@
 #  event_venue :string           not null
 #  created_at  :datetime         not null
 #  updated_at  :datetime         not null
-#  user_id     :bigint           not null
+#  creator_id  :bigint           not null
 #
 # Indexes
 #
@@ -17,7 +17,7 @@
 #
 # Foreign Keys
 #
-#  fk_rails_...  (user_id => users.id)
+#  fk_rails_...  (creator_id => users.id)
 #
 require 'rails_helper'
 
@@ -29,7 +29,7 @@ RSpec.describe Event, type: :model do
       description: "#{ SecureRandom.hex(4) }",
       event_venue: "#{ SecureRandom.hex(4) }",
       event_date: Time.now,
-      user_id: user.id
+      creator_id: user.id
     )
   end
 
