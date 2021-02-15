@@ -32,7 +32,7 @@ RSpec.describe Attendance, type: :model do
     )
   end
   describe "# valid" do
-    it "is valid if it has an both event and attendee" do
+    it "is valid if it has both event and attendee" do
       event = create_event
       user = User.create!(username: "#{ SecureRandom.hex(4) }")
 
