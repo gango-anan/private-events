@@ -22,4 +22,5 @@
 class Event < ApplicationRecord
   validates :event_name, uniqueness: true
   validates :event_name, :event_venue, :event_date, :description, presence: true
+  belongs_to :user
 end

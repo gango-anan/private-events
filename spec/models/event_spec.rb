@@ -22,18 +22,18 @@
 require 'rails_helper'
 
 RSpec.describe Event, type: :model do
-  describe "#valid?" do
-    def create_event(name: "Party-After-Party") 
-      user = User.create!(username: "#{ SecureRandom.hex(4) }")
-      Event.create!(
-        event_name: name,
-        description: "#{ SecureRandom.hex(4) }",
-        event_venue: "#{ SecureRandom.hex(4) }",
-        event_date: Time.now,
-        user_id: user.id
-      )
-    end
+  def create_event(name: "Party-After-Party") 
+    user = User.create!(username: "#{ SecureRandom.hex(4) }")
+    Event.create!(
+      event_name: name,
+      description: "#{ SecureRandom.hex(4) }",
+      event_venue: "#{ SecureRandom.hex(4) }",
+      event_date: Time.now,
+      user_id: user.id
+    )
+  end
 
+  describe "#valid?" do
     it "is valid if the Event Name is unique" do
       event1 = create_event
       expect(event1).to be_valid
@@ -87,6 +87,23 @@ RSpec.describe Event, type: :model do
       event.description = nil
       expect(event).not_to be_valid
 
+    end
+  end
+
+  describe "#save" do
+    user = User.create!(username: "#{ SecureRandom.hex(4) }")
+    it "belongs to a user" do
+      event = create_event
+      expect(event).to be_persisted
+
+      event1 = Event.new(
+                event_name: "Party",
+                description: "#{ SecureRandom.hex(4) }",
+                event_venue: "#{ SecureRandom.hex(4) }",
+                event_date: Time.now,
+      )
+      event1.save
+      expect(event1).not_to be_persisted
     end
   end
 end
