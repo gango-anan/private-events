@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   root 'users#index'
   resources :users, only: [:new, :show, :create]
-  get 'logout' => 'logins#destroy', as: 'logout'
+  get 'signout' => 'logins#destroy', as: 'signout'
   resources :logins, only: [:new, :create]
 end

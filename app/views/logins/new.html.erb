@@ -1,4 +1,5 @@
-<h1>Login In</h1>
+<%= content_for(:page_title, "Sign In") %>
+<h1>Sign In</h1>
 <%= form_with(url: logins_path, local: true) do |f| %>
   <div>
     <%= f.label :username %>
@@ -7,7 +8,7 @@
     <%= f.text_field :username %>
   </div>
   <div>
-    <%= f.submit "Log In" %>
+    <%= f.submit "Sign In" %>
   </div>
 <% end %>
 
