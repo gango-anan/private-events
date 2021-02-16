@@ -105,5 +105,30 @@ RSpec.describe Event, type: :model do
       event1.save
       expect(event1).not_to be_persisted
     end
+
+    context "where a user creates many events, " do
+      user = User.create!(username: "#{ SecureRandom.hex(4) }")
+      event1 = Event.create(
+        event_name: "#{ SecureRandom.hex(2) }",
+        description: "#{ SecureRandom.hex(2) }",
+        event_venue: "#{ SecureRandom.hex(2) }",
+        event_date: Time.now,
+        creator_id: user.id
+      )
+
+      event2 = Event.create(
+        event_name: "#{ SecureRandom.hex(2) }",
+        description: "#{ SecureRandom.hex(2) }",
+        event_venue: "#{ SecureRandom.hex(2) }",
+        event_date: Time.now,
+        creator_id: user.id
+      )
+
+      it "should allow a user to create multiple events" do
+        expect(event1).to be_persisted
+        expect(event2).to be_persisted
+      end
+
+    end
   end
 end
