@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   root 'users#index'
   resources :users, only: [:new, :show, :create]
-  # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
+  get 'logout' => 'logins#destroy', as: 'logout'
+  resources :logins, only: [:new, :create]
 end

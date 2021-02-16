@@ -1,7 +1,10 @@
 <h1>New User</h1>
 <%= form_with(model: @user, local: true) do |f| %>
-  <%= f.label :username %>
-  <%= f.text_field :username %>
-
-  <%= f.submit "Sign Up" %>
+  <div>
+    <%= f.label :username %>
+    <%= f.text_field :username %>
+  </div>
+  <div>
+    <%= f.submit "Sign Up" %>
+  </div>
 <% end %>

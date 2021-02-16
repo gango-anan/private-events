@@ -1,0 +1,13 @@
+<h1>Login In</h1>
+<%= form_with(url: logins_path, local: true) do |f| %>
+  <div>
+    <%= f.label :username %>
+  </div>
+  <div>
+    <%= f.text_field :username %>
+  </div>
+  <div>
+    <%= f.submit "Log In" %>
+  </div>
+<% end %>
+

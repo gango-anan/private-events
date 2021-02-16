@@ -1,5 +1,4 @@
 class UsersController < ApplicationController
-  before_action :set_user, only: [:show]
 
   def index
     @users = User.all
@@ -15,6 +14,20 @@ class UsersController < ApplicationController
 
   def create
     user_params = params.require(:user).permit(:username)
+    @user = User.new(user_params)
+
+    # return render 'new' unless @user
+
+    # session[:user_id] = @user.id
+    # redirect_to root_path, notice: "SignUp was successful!"
+
+    if @user.save
+      session[:user_id] = @user.id
+      redirect_to @user, notice: "SignUp was successful!"
+    else
+      flash.now.alert = "Invalid User name, try again!"
+      render 'new'
+    end
   end
 
 end

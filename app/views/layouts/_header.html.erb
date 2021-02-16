@@ -1,0 +1,10 @@
+<h1>Private Events</h1>
+<div>
+  <% if current_user%>
+    <%= "Logged in as: #{ current_user.username }" %>
+    <%= link_to 'Sign Out', logout_path %>
+  <% else %>  
+    <%= link_to 'Sign Up', new_user_path %>
+    <%= link_to 'Sign In', new_login_path %>
+  <% end %>
+</div>
