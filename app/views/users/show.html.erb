@@ -1,2 +1,10 @@
-<h1>User</h1>
-<p>Name: <%= @user.username%></p>
+<h1><%= @user.username.capitalize %>'s Events.</h1>
+
+<% Event.all.where(creator_id: @user.id).each do |event| %>
+  <div>
+    <p>Event Name: <%= event.event_name %></p>
+    <p>Event Details: <%= event.description %></p>
+    <p>Venue: <%= event.event_venue %></p>
+    <p>Event Date: <%= event.event_date %></p>
+  </div>
+<% end %>
