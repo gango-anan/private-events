@@ -1,2 +1,4 @@
-<h1>Events#new</h1>
-<p>Find me in app/views/events/new.html.erb</p>
+<%= content_for(:page_title, "Create Event") %>
+<h2>New Event</h2>
+
+<%= render 'form', event: @event %>
