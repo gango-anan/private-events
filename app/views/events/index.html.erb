@@ -1,2 +1,26 @@
-<h1>Events#index</h1>
-<p>Find me in app/views/events/index.html.erb</p>
+<section>
+  <h2>Events</h2>
+  <% @events.each do |event| %>
+    <h3>
+      Event Title: <%= event.event_name %>
+    </h3>
+    <br/>
+    <div>
+      Event Details: <%= event.description %>
+    </div>
+    <br/>
+    <div>
+      Venue: <%= event.event_venue %>
+    </div>
+    <br/>
+    <div>
+      Event Host: <%= event.creator_id %>
+    </div>
+    <br/>
+    <div>
+      Event Venue: <%= event.event_date %>
+    </div>
+    <br/>     
+  <% end %>
+</section>
+
