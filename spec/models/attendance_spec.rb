@@ -36,13 +36,13 @@ RSpec.describe Attendance, type: :model do
       event = create_event
       user = User.create!(username: "#{ SecureRandom.hex(4) }")
 
-      attendance = Attendance.create!(event_id: event.id, attendee_id: user.id)
+      attendance = Attendance.create!(event_id: event.id, user_id: user.id)
       expect(attendance).to be_valid
 
       attendance = Attendance.new(event_id: event.id)
       expect(attendance).not_to be_valid
 
-      attendance = Attendance.new(attendee_id: user.id)
+      attendance = Attendance.new(user_id: user.id)
       expect(attendance).not_to be_valid
     end
   end
