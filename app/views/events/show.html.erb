@@ -1,4 +1,9 @@
 <h2>Event </h2>
-<div>
-  <p>Event Created by: <%= @event.creator_id %></p>
-</div>
+
+<h3>Attendees List</h3>
+<% Attendance.all.each do |attendee| %>
+  <div>
+    <p>Attendee Name: <%= User.find(attendee[:user_id]).username %></p>
+    <p>Event Invitated to: <%= Event.find(attendee[:event_id]).event_name %></p>
+  </div>
+<% end %>

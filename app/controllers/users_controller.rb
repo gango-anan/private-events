@@ -1,5 +1,4 @@
 class UsersController < ApplicationController
-
   def index
     @users = User.all
   end
@@ -10,16 +9,12 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
+    #@user = current_user
   end
 
   def create
     user_params = params.require(:user).permit(:username)
     @user = User.new(user_params)
-
-    # return render 'new' unless @user
-
-    # session[:user_id] = @user.id
-    # redirect_to root_path, notice: "SignUp was successful!"
 
     if @user.save
       session[:user_id] = @user.id
@@ -29,5 +24,4 @@ class UsersController < ApplicationController
       render 'new'
     end
   end
-
 end
