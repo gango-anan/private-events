@@ -2,27 +2,16 @@
 <section>
   <h2>Events</h2>
   <%= link_to 'Create Event', new_event_path  %>
-  <% @events.each do |event| %>
-    <h3>
-      Event Title: <%= event.event_name %>
-    </h3>
-    <br/>
-    <div>
-      Event Details: <%= event.description %>
-    </div>
-    <br/>
-    <div>
-      Venue: <%= event.event_venue %>
-    </div>
-    <br/>
-    <div>
-      Event Host: <%= event.creator_id %>
-    </div>
-    <br/>
-    <div>
-      Event Venue: <%= event.event_date %>
-    </div>
-    <br/>     
+  <h3>Upcoming Events</h3>
+  <% Event.upcoming.each do |event| %>
+    <h4><%= event.event_name.capitalize %> | <%= event.event_date %></h4>
+    <br/>    
+  <% end %>
+
+  <h3>Previous Events</h3>
+  <% Event.past.each do |event| %>
+    <h4><%= event.event_name.capitalize %> | <%= event.event_date %></h4>
+    <br/>    
   <% end %>
 </section>
 

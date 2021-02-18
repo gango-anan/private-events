@@ -1,5 +1,4 @@
 class EventsController < ApplicationController
-  #before_action :set_event, only: [:update, :destroy, :show]
   before_action :logged_in?, except: :index
 
   def index
@@ -26,17 +25,7 @@ class EventsController < ApplicationController
     end
   end
 
-  def update
-  end
-
-  def destroy
-  end
-
   private
-
-  def set_event
-    @event = Event.find(params[:id])
-  end
 
   def event_params
     params.require(:event).permit(:description, :event_date, :event_name, :event_venue, :creator_id)
