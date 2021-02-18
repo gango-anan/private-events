@@ -1,5 +1,6 @@
 class EventsController < ApplicationController
-  before_action :set_event, only: [:update, :destroy]
+  #before_action :set_event, only: [:update, :destroy, :show]
+  before_action :logged_in?, except: :index
 
   def index
     @events = Event.all
@@ -10,6 +11,8 @@ class EventsController < ApplicationController
   end
 
   def show
+    @event = Event.find(params[:id])
+    #@events = Event.where(creator_id: current_user.id)
   end
 
   def create

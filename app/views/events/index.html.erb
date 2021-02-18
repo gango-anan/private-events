@@ -1,5 +1,7 @@
+<% content_for(:page_title, "Private Events") %>
 <section>
   <h2>Events</h2>
+  <%= link_to 'Create Event', new_event_path  %>
   <% @events.each do |event| %>
     <h3>
       Event Title: <%= event.event_name %>
