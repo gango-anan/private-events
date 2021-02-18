@@ -1,43 +1,27 @@
 <h2><%= @user.username.capitalize %>'s Events.</h2>
-<% if Event.all.where(creator_id: @user.id).count == 0 %>
+<% if Event.all.where(creator_id: @user.id).count.zero? %>
   <div>
     <p><%= "You haven't created any events yet!" %></p>
   </div>
 <% else %>
   <% Event.all.where(creator_id: @user.id).each do |event| %>
     <div>
-      <p>Event Name: <%= event.event_name %></p>
-      <p>Event Details: <%= event.description %></p>
-      <p>Venue: <%= event.event_venue %></p>
-      <p>Event Date: <%= event.event_date %></p>
+      <p>Event Name: <%= event.event_name %> | Event Date: <%= event.event_date %></p>
     </div>
   <% end %>
 <% end %>
 
-<% if Attendance.all.where(user_id: @user.id).count == 0  %>
-  <div>
-    <p><%= "Sorry, you haven't been invited to any event!" %></p>
-  </div>
-<% else %>
-  <% Attendance.all.where(user_id: @user.id).each do |attend| %>
-    <% att_event = Event.find(attend.event_id) %>
-    <% if att_event.event_date > DateTime.now %>
-      <h3><%= @user.username.capitalize %>'s Up Coming Events.</h3>
-      <div>
-        <p>Event Name: <%= att_event.event_name %></p>
-        <p>Event Details: <%= att_event.description %></p>
-        <p>Venue: <%= att_event.event_venue %></p>
-        <p>Event Date: <%= att_event.event_date %></p>
-      </div>
-    <% end %>
-    <% if att_event.event_date < DateTime.now %>
-      <h3><%= @user.username.capitalize %>'s Previous Events.</h3>
-      <div>
-        <p>Event Name: <%= att_event.event_name %></p>
-        <p>Event Details: <%= att_event.description %></p>
-        <p>Venue: <%= att_event.event_venue %></p>
-        <p>Event Date: <%= att_event.event_date %></p>
-      </div>
-    <% end %>
-  <% end %>
+<h3>Upcoming Events!</h3>
+<% @up_events.each do |event| %>
+  <%= event.event_name %> | <%= event.event_date %>
+  <br/>
+  <br/>
 <% end %>
+
+<h3>Previous Events!</h3>
+<% @prev_events.each do |event| %>
+  <%= event.event_name %> | <%= event.event_date %>
+  <br/>
+  <br/>
+<% end %>
+
