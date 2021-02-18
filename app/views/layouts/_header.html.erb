@@ -1,11 +1,31 @@
-<br/>
-<br/>
-<div>
-  <% if current_user%>
-    <%= "Signed in as: #{ current_user.username }" %>
-    <%= link_to 'Sign Out', signout_path %>
-  <% else %>  
-    <%= link_to 'Sign Up', new_user_path %>
-    <%= link_to 'Sign In', new_login_path %>
-  <% end %>
-</div>
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+  <%= link_to 'privateEvents', root_path, class:'navbar-brand'%>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarNavDropdown">
+    <ul class="navbar-nav ml-auto">
+      <li class="nav-item active">
+        <%= link_to 'All Events', root_path, class:'nav-link' %>
+      </li>
+      <% if current_user %>
+        <li class="nav-item">
+          <%= link_to 'Create Event', new_event_path, class:'nav-link' %>
+        </li>
+        <li class="nav-item">
+          <%= link_to "#{ current_user.username.capitalize }", root_path, class:'nav-link' %>
+        </li>
+        <li class="nav-item">
+          <%= link_to 'Sign Out', signout_path, class:'nav-link' %>
+        </li>
+      <% else %>
+        <li class="nav-item">
+          <%= link_to 'Sign Up', new_user_path, class:'nav-link' %>
+        </li>
+        <li class="nav-item">
+          <%= link_to 'Sign In', new_login_path, class:'nav-link' %>
+        </li>
+      <% end %>
+    </ul>
+  </div>
+</nav>

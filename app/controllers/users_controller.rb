@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_action :logged_in?, except: :create
+  before_action :logged_in?, except: [:create, :new]
 
   def index
     @users = User.all
@@ -27,14 +27,4 @@ class UsersController < ApplicationController
       render 'new'
     end
   end
-
-  # def self.up_user_events(current_user)
-  #   @up_events = current_user.events.map{ |event| event if event.event_date > DateTime.now }
-  # end
-
-  # def self.prev_user_events(current_user)
-  #   current_user.events.map do |event|
-  #     event if event.event_date < DateTime.now
-  #   end
-  # end
 end
