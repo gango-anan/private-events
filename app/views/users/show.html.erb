@@ -1,26 +1,27 @@
 <h2><%= @user.username.capitalize %>'s Events.</h2>
-<% if Event.all.where(creator_id: @user.id).count.zero? %>
+<% @all_created_events = Event.all.where(creator_id: @user.id) %>
+<% if @all_created_events.count.zero? %>
   <div>
     <p><%= "You haven't created any events yet!" %></p>
   </div>
 <% else %>
-  <% Event.all.where(creator_id: @user.id).each do |event| %>
+  <% @all_created_events.each do |event| %>
     <div>
-      <p>Event Name: <%= event.event_name %> | Event Date: <%= event.event_date %></p>
+      <p> <%= event.event_name.capitalize %> | Event Date: <%= event.event_date %></p>
     </div>
   <% end %>
 <% end %>
 
 <h3>Upcoming Events!</h3>
 <% @up_events.each do |event| %>
-  <%= event.event_name %> | <%= event.event_date %>
+  <%= event.event_name.capitalize %> | <%= event.event_date %>
   <br/>
   <br/>
 <% end %>
 
 <h3>Previous Events!</h3>
 <% @prev_events.each do |event| %>
-  <%= event.event_name %> | <%= event.event_date %>
+  <%= event.event_name.capitalize %> | <%= event.event_date %>
   <br/>
   <br/>
 <% end %>
