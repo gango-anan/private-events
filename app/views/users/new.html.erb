@@ -1,10 +1,21 @@
-<h1>New User</h1>
-<%= form_with(model: @user, local: true) do |f| %>
-  <div>
-    <%= f.label :username %>
-    <%= f.text_field :username %>
+<% content_for(:page_title, "Sign Up") %>
+<br>
+<br>
+<div class="card text-center">
+  <div class="card-header">
+    <h2>Sign Up</h2>
   </div>
-  <div>
-    <%= f.submit "Sign Up" %>
+  <br>
+  <br>
+  <div class="card-body">
+    <%= form_with(model: @user, local: true) do |f| %>
+      <div class="form-group">
+        <% f.label :username, 'User Name:' %>
+        <%= f.text_field :username, class:'form-control', placeholder:'Username' %>
+      </div>
+      <div>
+        <%= f.submit "Sign Up", class:'btn btn-primary btn-lg btn-block' %>
+      </div>
+    <% end %>
   </div>
-<% end %>
+</div>
