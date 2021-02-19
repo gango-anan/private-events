@@ -11,7 +11,7 @@ class EventsController < ApplicationController
 
   def show
     @event = Event.find(params[:id])
-    #@events = Event.where(creator_id: current_user.id)
+    session[:event_id] = @event.id
   end
 
   def create

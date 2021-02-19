@@ -8,13 +8,14 @@ class LoginsController < ApplicationController
       session[:user_id] = @user.id
       redirect_to @user, notice: "Welcome #{ @user.username }!"
     else
-      flash.now.alert = "Username is invalid"
+      flash.now.alert = "Username is invalid!"
       render 'new'
     end
   end
   
   def destroy
     session[:user_id] = nil
+    session[:event_id] = nil
     redirect_to root_path, notice: "Signed Out!"
   end
 end

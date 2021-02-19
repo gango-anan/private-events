@@ -1,5 +1,5 @@
 <section class="w-75 m-auto">
-  <%= form_with(model: event, local: true) do |form| %>
+  <%= form_with(model: @event, local: true) do |form| %>
     <div class="form-group">
       <%= form.label :event_name,"Event Title: " %>
       <%= form.text_field :event_name, class:"form-control", placeholder:'Event Title' %>
@@ -30,3 +30,5 @@
     </div>
   <% end %>
 </section>
+
+

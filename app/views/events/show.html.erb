@@ -1,6 +1,5 @@
 <% content_for(:page_title, "#{ current_user.username.capitalize }'s Events") %>
 <h2>Event </h2>
-
 <h3>Attendance List</h3>
 <% Attendance.all.each do |attendee| %>
   <div>
