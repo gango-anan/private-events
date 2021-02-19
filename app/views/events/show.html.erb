@@ -1,7 +1,7 @@
 <% content_for(:page_title, "#{ current_user.username.capitalize }'s Events") %>
 <h2>Event </h2>
 
-<h3>Attendees List</h3>
+<h3>Attendance List</h3>
 <% Attendance.all.each do |attendee| %>
   <div>
     <p>Attendee Name: <%= User.find(attendee[:user_id]).username %></p>
