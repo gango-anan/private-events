@@ -1,17 +1,45 @@
 <% content_for(:page_title, "Private Events") %>
 <section>
-  <h2>Events</h2>
-  <%= link_to 'Create Event', new_event_path  %>
+  <h2 class="text-center">Events</h2>
+  <br>
   <h3>Upcoming Events</h3>
-  <% Event.upcoming.each do |event| %>
-    <h4><%= event.event_name.capitalize %> | <%= event.event_date %></h4>
-    <br/>    
-  <% end %>
-
+  <table class="table table-striped table-bordered table-hover shadow">
+    <thead class="thead-dark">
+      <tr>
+        <th scope="col">Event</th>
+        <th scope="col">Venue</th>
+        <th scope="col">Date</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% Event.upcoming.each do |event| %>
+        <tr>
+          <td><%= link_to "#{ event.event_name.capitalize }", root_path %></td>
+          <td><%= event.event_venue %></td>
+          <td><%= event.event_date %></td>
+        </tr>   
+      <% end %>
+    </tbody>
+  </table>
+  <br>
+  <hr>
   <h3>Previous Events</h3>
-  <% Event.past.each do |event| %>
-    <h4><%= event.event_name.capitalize %> | <%= event.event_date %></h4>
-    <br/>    
-  <% end %>
+  <table class="table table-striped table-bordered table-hover shadow">
+    <thead class="bg-danger text-white">
+      <tr>
+        <th scope="col">Event</th>
+        <th scope="col">Venue</th>
+        <th scope="col">Date</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% Event.past.each do |event| %>
+        <tr>
+          <td><%= link_to "#{ event.event_name.capitalize }", root_path %></td>
+          <td><%= event.event_venue %></td>
+          <td><%= event.event_date %></td>
+        </tr>   
+      <% end %>
+    </tbody>
+  </table>
 </section>
-

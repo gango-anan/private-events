@@ -1,14 +1,19 @@
 <%= content_for(:page_title, "Sign In") %>
-<h1>Sign In</h1>
-<%= form_with(url: logins_path, local: true) do |f| %>
-  <div>
-    <%= f.label :username %>
-  </div>
-  <div>
-    <%= f.text_field :username %>
-  </div>
-  <div>
-    <%= f.submit "Sign In" %>
-  </div>
-<% end %>
+<br>
+<br>
+<section class="w-50 mx-auto bg-white py-5 mt-5 border shadow">
+  <h2 class="text-center">Sign In</h2>
+  <br>
+  <%= form_with(url: logins_path, local: true) do |f| %>
+    <div class="form-group w-75 m-auto">
+      <% f.label :username %>
+      <%= f.text_field :username, class:"form-control", placeholder:"Username" %>
+    </div>
+    <br/>
+    <br/>
+    <div class="w-75 m-auto">
+      <%= f.submit "Sign In", class:"btn btn-success btn-lg btn-block rounded-pill" %>
+    </div>
+  <% end %>
+</section>
 
