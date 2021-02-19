@@ -1,9 +1,6 @@
 <% content_for(:page_title, "#{ current_user.username.capitalize }'s Events") %>
-<h2>Event </h2>
+<h2 class="text-center">Event </h2>
+<p><%= link_to "Add Attendee", root_path, class:"text-primary"%> to <%= "#{ session[:event_name] } Event." %></p>
+
+
 <h3>Attendance List</h3>
-<% Attendance.all.each do |attendee| %>
-  <div>
-    <p>Attendee Name: <%= User.find(attendee[:user_id]).username %></p>
-    <p>Event Invitated to: <%= Event.find(attendee[:event_id]).event_name %></p>
-  </div>
-<% end %>
