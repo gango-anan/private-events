@@ -14,9 +14,13 @@
     <tbody>
       <% Event.upcoming.each do |event| %>
         <tr>
-          <td><%= link_to "#{ event.event_name.capitalize }", root_path %></td>
+          <td>
+            <span class="d-inline-block" tabindex="0" data-toggle="tooltip" title="Click to see more details">
+              <%= link_to "#{ event.event_name.capitalize }", event_path(event.id), class:"text-primary" %>
+            </span>
+          </td>
           <td><%= event.event_venue %></td>
-          <td><%= event.event_date %></td>
+          <td><%= event.event_date.strftime("%a, %d/%b/%Y, %I:%M %p") %></td>
         </tr>   
       <% end %>
     </tbody>
@@ -35,9 +39,13 @@
     <tbody>
       <% Event.past.each do |event| %>
         <tr>
-          <td><%= link_to "#{ event.event_name.capitalize }", root_path %></td>
+          <td>
+            <span class="d-inline-block" tabindex="0" data-toggle="tooltip" title="Click to see more details">
+              <%= link_to "#{ event.event_name.capitalize }", event_path(event.id), class:"text-primary" %>
+            </span>
+          </td>
           <td><%= event.event_venue %></td>
-          <td><%= event.event_date %></td>
+          <td><%= event.event_date.strftime("%a, %d/%b/%Y, %I:%M %p") %></td>
         </tr>   
       <% end %>
     </tbody>

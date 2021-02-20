@@ -1,5 +1,5 @@
 <% content_for(:page_title, "User's Events") %>
-<h2 class="text-center"><%= @user.username.capitalize %>'s Created Events.</h2>
+<h2 class="text-center"><%= @user.username.capitalize %>'s Events.</h2>
 <br>
 <% @all_created_events = Event.all.where(creator_id: @user.id) %>
   <% if @all_created_events.count.zero? %>
@@ -10,11 +10,14 @@
     <% @all_created_events.each do |event| %>
       <div class="card">
         <div class="card-body shadow">
-          <h4 class="h4 text-primary"><%= event.event_name.capitalize %></h4>
+          <span class="d-inline-block" tabindex="0" data-toggle="tooltip" title="Click to see attendee list for this event">
+            <%= link_to "#{ event.event_name.capitalize }", event_path(event.id), class:"h4 text-primary" %>
+          </span>
           <p class="lead"><%= event.description %></p>
           <hr>
           <p class="lead"><span class="font-weight-bolder">Venue:</span> <span><%= event.event_venue.capitalize %></span></p>
-          <p class="lead"><span class="font-weight-bolder">Date:</span> <span><%= event.event_date %></span></p>
+          <p class="lead"><span class="font-weight-bolder">
+          Date:</span> <span><%= event.event_date.strftime("%a, %d/%b/%Y, %I:%M %p") %></span></p>
         </div>
       </div>
       <br/>
@@ -25,11 +28,12 @@
 <% @up_events.each do |event| %>
   <div class="card">
     <div class="card-body shadow">
-      <h4 class="h4 text-primary"><%= event.event_name.capitalize %></h4>
+      <h4 class="h4 text-primary text-decoration-none"><%= link_to "#{ event.event_name.capitalize }", event_path(event.id) %></h4>
       <p class="lead"><%= event.description %></p>
       <hr>
       <p class="lead"><span class="font-weight-bolder">Venue:</span> <span><%= event.event_venue.capitalize %></span></p>
-      <p class="lead"><span class="font-weight-bolder">Date:</span> <span><%= event.event_date %></span></p>
+      <p class="lead"><span class="font-weight-bolder">
+      Date:</span> <span><%= event.event_date.strftime("%a, %d/%b/%Y, %I:%M %p") %></span></p>
     </div>
   </div>
   <br/>
@@ -39,11 +43,12 @@
 <% @prev_events.each do |event| %>
   <div class="card">
     <div class="card-body shadow">
-      <h4 class="h4 font-weight-bolder text-primary"><%= event.event_name.capitalize %></h4>
+      <h4 class="h4 font-weight-bolder text-primary"><%= link_to "#{ event.event_name.capitalize }", event_path(event.id) %></h4>
       <p class="lead"><%= event.description %></p>
       <hr>
       <p class="lead"><span class="font-weight-bolder">Venue:</span> <span><%= event.event_venue.capitalize %></span></p>
-      <p class="lead"><span class="font-weight-bolder">Date:</span> <span><%= event.event_date %></span></p>
+      <p class="lead"><span class="font-weight-bolder">
+      Date:</span> <span><%= event.event_date.strftime("%a, %d/%b/%Y, %I:%M %p") %></span></p>
     </div>
   </div>
   <br/>
