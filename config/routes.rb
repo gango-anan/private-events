@@ -1,7 +1,6 @@
 Rails.application.routes.draw do
-  get 'attendances/new'
-  get 'attendances/create'
   root 'events#index'
+  resources :attendances, only: [:new, :create]
   resources :events
   resources :users, only: [:index, :new, :show, :create]
   get 'signout' => 'logins#destroy', as: 'signout'

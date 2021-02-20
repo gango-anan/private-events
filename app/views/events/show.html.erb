@@ -1,6 +1,6 @@
 <% content_for(:page_title, "#{ current_user.username.capitalize }'s Events") %>
 <h2 class="text-center">Event </h2>
-<p><%= link_to "Add Attendee", root_path, class:"text-primary"%> to <%= "#{ session[:event_name] } Event." %></p>
+<p><%= link_to "Add Attendee", new_attendance_path, class:"text-primary"%> to <%= "#{ session[:event_name] } Event." %></p>
 
 
 <h3>Attendance List</h3>
