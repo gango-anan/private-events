@@ -22,13 +22,13 @@
 class Event < ApplicationRecord
   validates :event_name, uniqueness: true
   validates :event_name, :event_venue, :event_date, :description, presence: true
-  belongs_to :user, foreign_key: "creator_id", class_name: "User"
+  belongs_to :user, foreign_key: 'creator_id', class_name: 'User'
   has_many :attendances
   has_many :users, through: :attendances
 
   def self.past
     past_events = []
-    self.all.each do |event|
+    all.each do |event|
       past_events << event if event.event_date < DateTime.now
     end
 
@@ -37,10 +37,10 @@ class Event < ApplicationRecord
 
   def self.upcoming
     up_events = []
-    self.all.each do |event|
+    all.each do |event|
       up_events << event if event.event_date > DateTime.now
     end
-    
+
     up_events
   end
 end

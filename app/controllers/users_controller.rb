@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_action :logged_in?, except: [:create, :new]
+  before_action :logged_in?, except: %i[create new]
 
   def index
     @users = User.all
@@ -11,8 +11,8 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
-    @up_events = @user.events.select{ |event| event if event.event_date > DateTime.now }
-    @prev_events = @user.events.select{ |event| event if event.event_date < DateTime.now }
+    @up_events = @user.events.select { |event| event if event.event_date > DateTime.now }
+    @prev_events = @user.events.select { |event| event if event.event_date < DateTime.now }
   end
 
   def create
@@ -21,9 +21,9 @@ class UsersController < ApplicationController
 
     if @user.save
       session[:user_id] = @user.id
-      redirect_to @user, notice: "SignUp was successful!"
+      redirect_to @user, notice: 'SignUp was successful!'
     else
-      flash.now.alert = "Invalid User name, try again!"
+      flash.now.alert = 'Invalid User name, try again!'
       render 'new'
     end
   end

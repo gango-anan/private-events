@@ -19,9 +19,9 @@ class EventsController < ApplicationController
     @event = current_user.events.build(event_params)
 
     if @event.save
-      redirect_to @event, notice: "Event Successfully Created!"
+      redirect_to @event, notice: 'Event Successfully Created!'
     else
-      flash.now.alert = "Invalid Details, try again!"
+      flash.now.alert = 'Invalid Details, try again!'
       render 'new'
     end
   end

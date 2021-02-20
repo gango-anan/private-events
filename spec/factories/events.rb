@@ -21,10 +21,10 @@
 #
 FactoryBot.define do
   factory :event do
-    event_name { "MyString" }
-    description { "MyText" }
-    event_venue { "MyString" }
-    event_date { "2021-02-13 16:59:04" }
-    user_id { "" }
+    event_name { 'MyString' }
+    description { 'MyText' }
+    event_venue { 'MyString' }
+    event_date { '2021-02-13 16:59:04' }
+    user_id { '' }
   end
 end

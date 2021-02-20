@@ -21,20 +21,20 @@
 require 'rails_helper'
 
 RSpec.describe Attendance, type: :model do
-  def create_event(name: "2020-Party") 
-    user = User.create!(username: "#{ SecureRandom.hex(4) }")
+  def create_event(name: '2020-Party')
+    user = User.create!(username: SecureRandom.hex(4).to_s)
     Event.create!(
       event_name: name,
-      description: "#{ SecureRandom.hex(4) }",
-      event_venue: "#{ SecureRandom.hex(4) }",
+      description: SecureRandom.hex(4).to_s,
+      event_venue: SecureRandom.hex(4).to_s,
       event_date: Time.now,
       creator_id: user.id
     )
   end
-  describe "# valid" do
-    it "is valid if it has both event and attendee" do
+  describe '# valid' do
+    it 'is valid if it has both event and attendee' do
       event = create_event
-      user = User.create!(username: "#{ SecureRandom.hex(4) }")
+      user = User.create!(username: SecureRandom.hex(4).to_s)
 
       attendance = Attendance.create!(event_id: event.id, user_id: user.id)
       expect(attendance).to be_valid

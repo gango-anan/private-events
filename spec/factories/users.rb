@@ -13,6 +13,6 @@
 #
 FactoryBot.define do
   factory :user do
-    username { "MyString" }
+    username { 'MyString' }
   end
 end

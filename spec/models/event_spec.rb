@@ -22,113 +22,111 @@
 require 'rails_helper'
 
 RSpec.describe Event, type: :model do
-  def create_event(name: "Party-After-Party") 
-    user = User.create!(username: "#{ SecureRandom.hex(4) }")
+  def create_event(name: 'Party-After-Party')
+    user = User.create!(username: SecureRandom.hex(4).to_s)
     Event.create!(
       event_name: name,
-      description: "#{ SecureRandom.hex(4) }",
-      event_venue: "#{ SecureRandom.hex(4) }",
+      description: SecureRandom.hex(4).to_s,
+      event_venue: SecureRandom.hex(4).to_s,
       event_date: Time.now,
       creator_id: user.id
     )
   end
 
-  describe "#valid?" do
-    it "is valid if the Event Name is unique" do
+  describe '#valid?' do
+    it 'is valid if the Event Name is unique' do
       event1 = create_event
       expect(event1).to be_valid
     end
 
-    it "is invalid if Event Name is already used" do
-      event2 = create_event(name: "Gambino-Concert")
-      event3 = Event.new(event_name: "Gambino-Concert")
+    it 'is invalid if Event Name is already used' do
+      event2 = create_event(name: 'Gambino-Concert')
+      event3 = Event.new(event_name: 'Gambino-Concert')
       expect(event3).not_to be_valid
     end
 
-    it "is invalid if Event Name is empty or nil" do
-      event = create_event(name: "Chetto-Survivors")
-      
-      event.event_name = ""
+    it 'is invalid if Event Name is empty or nil' do
+      event = create_event(name: 'Chetto-Survivors')
+
+      event.event_name = ''
       expect(event).not_to be_valid
 
       event.event_name = nil
       expect(event).not_to be_valid
     end
 
-    it "is valid if it has a Venue" do
+    it 'is valid if it has a Venue' do
       event = create_event
       expect(event).to be_valid
 
-      event.event_venue = ""
+      event.event_venue = ''
       expect(event).not_to be_valid
 
       event.event_venue = nil
       expect(event).not_to be_valid
     end
 
-    it "is valid if it has an Event Date" do
+    it 'is valid if it has an Event Date' do
       event = create_event
       expect(event).to be_valid
 
-      event.event_date = ""
+      event.event_date = ''
       expect(event).not_to be_valid
 
       event.event_date = nil
       expect(event).not_to be_valid
     end
 
-    it "is valid if it has a description" do
+    it 'is valid if it has a description' do
       event = create_event
       expect(event).to be_valid
 
-      event.description = ""
+      event.description = ''
       expect(event).not_to be_valid
 
       event.description = nil
       expect(event).not_to be_valid
-
     end
   end
 
-  describe "#save" do
-    user = User.create!(username: "#{ SecureRandom.hex(4) }")
-    it "belongs to a user" do
+  describe '#save' do
+    user = User.create!(username: SecureRandom.hex(4).to_s)
+    it 'belongs to a user' do
       event = create_event
       expect(event).to be_persisted
 
       event1 = Event.new(
-                event_name: "Party",
-                description: "#{ SecureRandom.hex(4) }",
-                event_venue: "#{ SecureRandom.hex(4) }",
-                event_date: Time.now,
+        event_name: 'Party',
+        description: SecureRandom.hex(4).to_s,
+        event_venue: SecureRandom.hex(4).to_s,
+        event_date: Time.now
       )
       event1.save
       expect(event1).not_to be_persisted
     end
 
-    context "where a user creates many events, " do
-      user = User.create!(username: "#{ SecureRandom.hex(4) }")
+    context 'where a user creates many events, ' do
+      user = User.create!(username: SecureRandom.hex(4).to_s)
       event1 = Event.create(
-        event_name: "#{ SecureRandom.hex(2) }",
-        description: "#{ SecureRandom.hex(2) }",
-        event_venue: "#{ SecureRandom.hex(2) }",
+        event_name: SecureRandom.hex(2).to_s,
+        description: SecureRandom.hex(2).to_s,
+        event_venue: SecureRandom.hex(2).to_s,
         event_date: Time.now,
         creator_id: user.id
       )
 
       event2 = Event.create(
-        event_name: "#{ SecureRandom.hex(2) }",
-        description: "#{ SecureRandom.hex(2) }",
-        event_venue: "#{ SecureRandom.hex(2) }",
+        event_name: SecureRandom.hex(2).to_s,
+        description: SecureRandom.hex(2).to_s,
+        event_venue: SecureRandom.hex(2).to_s,
         event_date: Time.now,
         creator_id: user.id
       )
 
-      it "should allow a user to create multiple events" do
+      it 'should allow a user to create multiple events' do
         expect(event1).to be_persisted
         expect(event2).to be_persisted
       end
-
     end
   end
 end
