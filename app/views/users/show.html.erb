@@ -1,28 +1,51 @@
-<h2><%= @user.username.capitalize %>'s Events.</h2>
+<% content_for(:page_title, "User's Events") %>
+<h2 class="text-center"><%= @user.username.capitalize %>'s Created Events.</h2>
+<br>
 <% @all_created_events = Event.all.where(creator_id: @user.id) %>
-<% if @all_created_events.count.zero? %>
-  <div>
-    <p><%= "You haven't created any events yet!" %></p>
-  </div>
-<% else %>
-  <% @all_created_events.each do |event| %>
+  <% if @all_created_events.count.zero? %>
     <div>
-      <p> <%= event.event_name.capitalize %> | Event Date: <%= event.event_date %></p>
+      <p class="lead"><%= "You haven't created any events yet!" %></p>
     </div>
-  <% end %>
+  <% else %>
+    <% @all_created_events.each do |event| %>
+      <div class="card">
+        <div class="card-body shadow">
+          <h4 class="h4 text-primary"><%= event.event_name.capitalize %></h4>
+          <p class="lead"><%= event.description %></p>
+          <hr>
+          <p class="lead"><span class="font-weight-bolder">Venue:</span> <span><%= event.event_venue.capitalize %></span></p>
+          <p class="lead"><span class="font-weight-bolder">Date:</span> <span><%= event.event_date %></span></p>
+        </div>
+      </div>
+      <br/>
+    <% end %>
 <% end %>
 
-<h3>Upcoming Events!</h3>
+<h3 class="text-success h3 font-weight-bolder">Upcoming Events</h3>
 <% @up_events.each do |event| %>
-  <%= event.event_name.capitalize %> | <%= event.event_date %>
-  <br/>
+  <div class="card">
+    <div class="card-body shadow">
+      <h4 class="h4 text-primary"><%= event.event_name.capitalize %></h4>
+      <p class="lead"><%= event.description %></p>
+      <hr>
+      <p class="lead"><span class="font-weight-bolder">Venue:</span> <span><%= event.event_venue.capitalize %></span></p>
+      <p class="lead"><span class="font-weight-bolder">Date:</span> <span><%= event.event_date %></span></p>
+    </div>
+  </div>
   <br/>
 <% end %>
 
-<h3>Previous Events!</h3>
+<h3 class="text-danger h3 font-weight-bolder">Previously Attended Events</h3>
 <% @prev_events.each do |event| %>
-  <%= event.event_name.capitalize %> | <%= event.event_date %>
-  <br/>
+  <div class="card">
+    <div class="card-body shadow">
+      <h4 class="h4 font-weight-bolder text-primary"><%= event.event_name.capitalize %></h4>
+      <p class="lead"><%= event.description %></p>
+      <hr>
+      <p class="lead"><span class="font-weight-bolder">Venue:</span> <span><%= event.event_venue.capitalize %></span></p>
+      <p class="lead"><span class="font-weight-bolder">Date:</span> <span><%= event.event_date %></span></p>
+    </div>
+  </div>
   <br/>
 <% end %>
 
