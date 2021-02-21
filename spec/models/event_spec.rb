@@ -39,12 +39,6 @@ RSpec.describe Event, type: :model do
       expect(event1).to be_valid
     end
 
-    it 'is invalid if Event Name is already used' do
-      event3 = create_event(name: 'Gambino-Concert')
-      event3 = Event.new(event_name: 'Gambino-Concert')
-      expect(event3).not_to be_valid
-    end
-
     it 'is invalid if Event Name is empty or nil' do
       event = create_event(name: 'Chetto-Survivors')
 
