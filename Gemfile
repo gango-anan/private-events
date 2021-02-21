@@ -38,6 +38,8 @@ end
 
 group :test do
   gem 'database_cleaner', '~> 2.0', '>= 2.0.1'
+  gem 'selenium-webdriver', '~> 3.142', '>= 3.142.7'
+  gem 'webdrivers', '~> 4.5'
 end
 
 group :development do
