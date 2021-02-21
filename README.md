@@ -1,6 +1,6 @@
 ![](https://img.shields.io/badge/Microverse-blueviolet)
 
-# Members Only
+# Private Events
 Private Events is a RESTful application created using Ruby on rails. It allows users to create events, invite other registered users to attend the events, and then manage user signups.
 
 ### Home Page
