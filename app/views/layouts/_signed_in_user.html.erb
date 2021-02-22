@@ -1,0 +1,12 @@
+<li class="nav-item">
+  <%= link_to 'My Events', user_path(current_user.id), class:'nav-link' %>
+</li>
+<li class="nav-item">
+  <%= link_to 'Create Event', new_event_path, class:'nav-link' %>
+</li>
+<li class="nav-item">
+  <%= link_to "#{ current_user.username.capitalize }", user_path(current_user.id), class:'nav-link' %>
+</li>
+<li class="nav-item">
+  <%= link_to 'Sign Out', signout_path, class:'nav-link' %>
+</li>

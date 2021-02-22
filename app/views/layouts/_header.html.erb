@@ -8,28 +8,7 @@
       <li class="nav-item active">
         <%= link_to 'All Events', root_path, class:'nav-link' %>
       </li>
-
-      <% if current_user %>
-        <li class="nav-item">
-          <%= link_to 'My Events', user_path(current_user.id), class:'nav-link' %>
-        </li>
-        <li class="nav-item">
-          <%= link_to 'Create Event', new_event_path, class:'nav-link' %>
-        </li>
-        <li class="nav-item">
-          <%= link_to "#{ current_user.username.capitalize }", user_path(current_user.id), class:'nav-link' %>
-        </li>
-        <li class="nav-item">
-          <%= link_to 'Sign Out', signout_path, class:'nav-link' %>
-        </li>
-      <% else %>
-        <li class="nav-item">
-          <%= link_to 'Sign Up', new_user_path, class:'nav-link' %>
-        </li>
-        <li class="nav-item">
-          <%= link_to 'Sign In', new_login_path, class:'nav-link' %>
-        </li>
-      <% end %>
+      <%= logged_in? %>
     </ul>
   </div>
 </nav>
