@@ -15,6 +15,6 @@ class LoginsController < ApplicationController
   def destroy
     session[:user_id] = nil
     session[:event_id] = nil
-    redirect_to root_path, notice: 'Signed Out!'
+    redirect_to root_path, notice: 'Events'
   end
 end
