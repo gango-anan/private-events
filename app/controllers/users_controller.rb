@@ -11,8 +11,8 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
-    @up_events = @user.events.select { |event| event if event.event_date > DateTime.now }
-    @prev_events = @user.events.select { |event| event if event.event_date < DateTime.now }
+    @up_events = @user.events.upcoming_events
+    @prev_events = @user.events.past_events
   end
 
   def create

@@ -2,7 +2,8 @@ class EventsController < ApplicationController
   before_action :logged_in?, except: :index
 
   def index
-    @events = Event.all
+    @upcoming = Event.upcoming_events
+    @past = Event.past_events
   end
 
   def new

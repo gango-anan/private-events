@@ -12,7 +12,7 @@
       </tr>
     </thead>
     <tbody>
-      <% Event.upcoming.each do |event| %>
+      <% @upcoming.each do |event| %>
         <tr>
           <td>
             <span class="d-inline-block" tabindex="0" data-toggle="tooltip" title="Click to see more details">
@@ -37,7 +37,7 @@
       </tr>
     </thead>
     <tbody>
-      <% Event.past.each do |event| %>
+      <% @past.each do |event| %>
         <tr>
           <td>
             <span class="d-inline-block" tabindex="0" data-toggle="tooltip" title="Click to see more details">

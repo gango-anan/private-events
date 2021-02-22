@@ -26,21 +26,6 @@ class Event < ApplicationRecord
   has_many :attendances
   has_many :users, through: :attendances
 
-  def self.past
-    past_events = []
-    all.each do |event|
-      past_events << event if event.event_date < DateTime.now
-    end
-
-    past_events
-  end
-
-  def self.upcoming
-    up_events = []
-    all.each do |event|
-      up_events << event if event.event_date > DateTime.now
-    end
-
-    up_events
-  end
+  scope :upcoming_events, -> { where('event_date >= ?', DateTime.now) }
+  scope :past_events, -> { where('event_date <= ?', DateTime.now) }
 end
