@@ -24,7 +24,7 @@ RSpec.describe 'Events', type: :request do
 
   describe 'POST /create' do
     it 'returns http success' do
-      event = { description: 'Hello', event_date: Time.now, event_name: 'G Party', event_venue: 'Cafe Ark', creator_id: 1 }
+      event = { description: 'Hi', event_date: Time.now, event_name: 'Party', event_venue: 'Cafe', creator_id: 1 }
       post events_path, params: event
       expect(response).to have_http_status(200)
     end
