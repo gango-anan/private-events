@@ -1,0 +1,19 @@
+<% content_for(:page_title, "Sign Up") %>
+<br>
+<br>
+<section class="w-50 mx-auto bg-white py-5 mt-5 border shadow">
+  <h2 class="text-center">Sign Up</h2>
+  <br>
+  <%= form_with(model: @user, local: true) do |f| %>
+    <div class="form-group w-75 m-auto">
+      <% f.label :username, 'User Name:' %>
+      <%= f.text_field :username, class:'form-control', placeholder:'Username' %>
+    </div>
+    <br/>
+    <br/>
+    <div class="w-75 m-auto">
+      <%= f.submit "Sign Up", class:"btn btn-primary btn-lg btn-block rounded-pill" %>
+    </div>
+    <br>
+  <% end %>
+</section>

@@ -1,0 +1,5 @@
+<%= content_for(:page_title, "Registered Users") %>
+<h1>Registered Users</h1>
+<% @users.each do |user| %>
+  <p><%= user.username %></p>
+<% end %>

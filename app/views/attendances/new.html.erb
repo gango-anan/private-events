@@ -1,0 +1,16 @@
+<% content_for(:page_title, "Add Attendee") %>
+<br>
+<br>
+<section class="text-center bg-white border w-50 m-auto py-5 shadow">
+  <h3 class="display-4">Add Attendee</h3>
+  <br>
+  <p class="lead">Select attendee from the following list of registered users.</p>
+  <%= form_with(model: @attendance) do |form| %>
+      <%= form.collection_select :user_id, User.order(:username), :id, :username %>
+      <%= form.number_field :event_id, id: :attendance_event_id, value: session[:event_id], type: :hidden %>
+      <%= form.submit "Add Attendee", class:"btn btn-primary" %>
+  <% end %>
+</section>
+
+
+

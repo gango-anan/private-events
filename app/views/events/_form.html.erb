@@ -1,0 +1,34 @@
+<section class="w-75 m-auto">
+  <%= form_with(model: @event, local: true) do |form| %>
+    <div class="form-group">
+      <%= form.label :event_name,"Event Title: " %>
+      <%= form.text_field :event_name, class:"form-control", placeholder:'Event Title' %>
+    </div>
+ 
+    <div class="form-group">
+      <%= form.label :description, "Event Details: " %>
+      <br>
+      <%= form.text_area :description,class:"form-control", rows:3 %>
+    </div>
+
+    <div class="form-group">
+      <%= form.label :event_venue, "Venue: " %>
+      <br>
+      <%= form.text_field :event_venue, class:"form-control", placeholder:"Venue" %>
+    </div>
+    <br/>
+    <div class="form-group">
+      <%= form.label :event_date, "Date: " %>
+      <br>
+      <%= form.datetime_select :event_date%>
+    </div>
+    <br/>
+    <% form.label :creator_id, "Event Host: " %>
+    <%= form.number_field :creator_id, id: :even_creator_id, value: current_user.id, type: :hidden %>
+    <div class="text-center mb-5">
+      <%= form.submit "Create Event", class:"btn btn-primary ml-auto w-50" %>
+    </div>
+  <% end %>
+</section>
+
+
