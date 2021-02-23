@@ -69,4 +69,4 @@ Give a ⭐️ if you like this project!
 
 ## 📝 License
 
-This project is [MIT](https://github.com/gango-anan/private-events/blob/users-events/LICENSE) licensed.
+This project is [MIT](https://github.com/gango-anan/private-events/blob/development/LICENSE) licensed.
